@@ -1,4 +1,4 @@
-
+import openpyxl
 import streamlit as st
 import pandas as pd
 import os
@@ -25,7 +25,7 @@ st.write("Transform your files between CSV and Excel formats with built-in data 
 
 uploaded_file = st.file_uploader("Upload your files (CSV or Excel):", type=["csv", "xlsx"], accept_multiple_files=True)
 
-if uploaded_file is not None and len(uploaded_file) > 0:
+if uploaded_file:
     for file in uploaded_file:
         file_ext = os.path.splitext(file.name)[-1].lower()
 
@@ -78,7 +78,7 @@ if uploaded_file is not None and len(uploaded_file) > 0:
                     file_name = file.name.replace(".xlsx", ".csv")
                     mime_type = "text/csv"
                 elif conversion_type == "excel":
-                    with pd.ExcelWriter(output, engine='opes writer:
+                    with pd.ExcelWriter(output, engine='openpyxl') as writer:
                         df.to_excel(writer, index=False)
                     file_name = file.name.replace(".csv", ".xlsx")
                     mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"

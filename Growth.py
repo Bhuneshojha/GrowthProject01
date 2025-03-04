@@ -78,7 +78,7 @@ if uploaded_file:
                     file_name = file.name.replace(".xlsx", ".csv")
                     mime_type = "text/csv"
                 elif conversion_type == "excel":
-                    with pd.ExcelWriter(output) as writer:
+                    # with pd.ExcelWriter(output) as writer:
                         df.to_excel(writer, index=False)
                     file_name = file.name.replace(".csv", ".xlsx")
                     mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"

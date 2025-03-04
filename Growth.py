@@ -33,7 +33,7 @@ if uploaded_file:
             if file_ext == ".csv":
                 df = pd.read_csv(file)
             elif file_ext == ".xlsx":
-                df = pd.read_excel(file, engine='openpyxl')
+                df = pd.read_excel(file)
             else:
                 st.error(f"File type {file_ext} not supported")
                 continue
@@ -78,7 +78,7 @@ if uploaded_file:
                     file_name = file.name.replace(".xlsx", ".csv")
                     mime_type = "text/csv"
                 elif conversion_type == "excel":
-                    with pd.ExcelWriter(output, engine='openpyxl') as writer:
+                    with pd.ExcelWriter(output) as writer:
                         df.to_excel(writer, index=False)
                     file_name = file.name.replace(".csv", ".xlsx")
                     mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"

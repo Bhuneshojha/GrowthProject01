@@ -23,7 +23,7 @@ st.markdown(
 )
 
 # Title
-st.title("Data Sweeper integrator Bhunesh Kumar")
+st.title("Data Sweeper integrator By Bhunesh Kumar")
 st.write("tansform your files between csv and excel formats with built in dta cleaning and data analysis")
 
 
@@ -31,7 +31,7 @@ uploaded_file = st.file_uploader("Upload your files (Csv or excel):", type=["csv
 
 if uploaded_file:
     for file in uploaded_file:
-        file_ext = os.path.splittext(file.name)[-1].lower()
+        file_ext = os.path.splitext(file.name)[-1].lower()
         
         if file_ext == ".csv":
             df = pd.read_csv(file)
